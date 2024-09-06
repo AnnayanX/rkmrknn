@@ -3,22 +3,13 @@
   "builds": [
     {
       "src": "app.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/webhook",
-      "methods": ["POST"],
-      "dest": "index.py"
-    },
-    {
-      "src": "/notify_ip",
-      "methods": ["POST"],
-      "dest": "index.py"
+      "src": "/(.*)",
+      "dest": "app.py"
     }
   ]
 }
