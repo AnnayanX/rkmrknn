@@ -87,6 +87,11 @@ def count_tokens(text):
     # Simple token count; for accurate token counting, use a tokenizer
     return len(text.split())
 
+@app.route('/')
+def index():
+    # Render index.html and pass any variables if needed
+    return render_template('index.html', username='Dhanrakshak')
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.get_json()
@@ -114,3 +119,6 @@ def webhook():
         send_message(CHAT_ID, f"Error processing message: {e}")
 
     return jsonify(success=True)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
